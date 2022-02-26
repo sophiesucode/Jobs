@@ -34,7 +34,7 @@ public class JobService {
     }
 
 
-    public Optional<Job> getJobs(Long jobId) {
+    public Optional<Job> getJob(Long jobId) {
 
         Optional<Job> job = jobRepository.findById(jobId);
         if(job.isPresent()){
@@ -59,5 +59,14 @@ public class JobService {
         }else{
             throw new InformationNotFoundException("job with id " + jobId + " not found");
         }
+    }
+
+    //look up all jobs , return all jobs 
+    public Iterable<Job> lookup(){
+        return jobRepository.findAll();
+    }
+
+    public long total(){
+        return jobRepository.count();
     }
 }
