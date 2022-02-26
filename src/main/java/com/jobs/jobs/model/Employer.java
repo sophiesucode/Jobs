@@ -1,12 +1,17 @@
 package com.jobs.jobs.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-
+@Entity
+@Table(name="employers")
 public class Employer {
 
+        @Id
+        @Column
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
+        @Column
         private String company_name;
 
 

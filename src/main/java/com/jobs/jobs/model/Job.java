@@ -1,20 +1,31 @@
 package com.jobs.jobs.model;
 
 
+import javax.persistence.*;
 
-
+@Entity
+@Table(name="jobs")
 public class Job {
 
+
+   @Id
+   @Column
+   @GeneratedValue
     private Long id;
 
+   @Column
     private String experience_level;
 
+   @Column
     private String job_title;
 
+   @Column
     private String job_description;
 
+    @Column
     private String location;
 
+    @Column
     private int date_posted;
 
     public Job() {
