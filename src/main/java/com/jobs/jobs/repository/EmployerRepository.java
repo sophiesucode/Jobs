@@ -1,4 +1,9 @@
 package com.jobs.jobs.repository;
 
-public interface EmployerRepository {
+import com.jobs.jobs.model.Employer;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmployerRepository extends JpaRepository<Employer,Long> {
+
 }
