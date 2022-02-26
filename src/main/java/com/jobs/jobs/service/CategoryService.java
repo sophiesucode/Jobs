@@ -1,8 +1,12 @@
 package com.jobs.jobs.service;
 
+import com.jobs.jobs.exceptions.InformationExistException;
+import com.jobs.jobs.model.Category;
 import com.jobs.jobs.repository.CategoryRepository;
 import com.jobs.jobs.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class CategoryService {
 
@@ -20,4 +24,21 @@ public class CategoryService {
     public void setJobRepository(JobRepository jobRepository){
         this.jobRepository = jobRepository;
     }
+
+    public List<Category> getAllCategories(){
+        return categoryRepository.findAll();
+    }
+
+
+    public Category createCategory(Category categoryObject){
+
+        Category category = categoryRepository.findByName(categoryObject.getName());
+        if(category != null){
+            throw new InformationExistException("category with name " + category.getName() + " already exists");
+        } else{
+            return categoryRepository.save(categoryObject);
+        }
+    }
+
+
 }
