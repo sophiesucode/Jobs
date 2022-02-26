@@ -6,10 +6,12 @@ import com.jobs.jobs.model.Category;
 import com.jobs.jobs.repository.CategoryRepository;
 import com.jobs.jobs.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CategoryService {
 
     private CategoryRepository categoryRepository;
@@ -52,5 +54,44 @@ public class CategoryService {
         }
 
     }
+
+    public Optional<Category> getCategory( String categoryName){
+
+        Optional<Category> category = Optional.ofNullable(categoryRepository.findByName(categoryName));
+        if(category.isPresent()){
+            return category;
+        } else{
+            throw new InformationNotFoundException("category " + categoryName + " not found");
+        }
+
+    }
+
+    public Category updateCategory(Long categoryId, Category categoryObject){
+
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        if(category.isPresent()){
+            Category updateCategory = categoryRepository.findById(categoryId).get();
+            updateCategory.setName(categoryObject.getName());
+            return categoryRepository.save(updateCategory);
+        } else{
+            throw new InformationNotFoundException("category with id " + categoryId + " not found");
+        }
+
+    }
+
+    public Optional<Category> deleteCategory(Long categoryId){
+
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        if(category.isPresent()){
+            categoryRepository.deleteById(categoryId);
+            return category;
+        } else{
+            throw new InformationNotFoundException("category with id " + categoryId +" not found");
+        }
+    }
+
+
+
+
 
 }
