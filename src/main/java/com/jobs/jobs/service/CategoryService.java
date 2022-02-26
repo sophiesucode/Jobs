@@ -1,12 +1,14 @@
 package com.jobs.jobs.service;
 
 import com.jobs.jobs.exceptions.InformationExistException;
+import com.jobs.jobs.exceptions.InformationNotFoundException;
 import com.jobs.jobs.model.Category;
 import com.jobs.jobs.repository.CategoryRepository;
 import com.jobs.jobs.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CategoryService {
 
@@ -40,5 +42,15 @@ public class CategoryService {
         }
     }
 
+    public Optional<Category> getCategory(Long categoryId){
+
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        if(category.isPresent()){
+            return category;
+        } else{
+            throw new InformationNotFoundException("category with Id " + categoryId + " not found");
+        }
+
+    }
 
 }
