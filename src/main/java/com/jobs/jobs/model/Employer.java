@@ -18,12 +18,18 @@ public class Employer {
         @Column
         private String company_name;
 
-
-
-    @OneToMany(mappedBy = "Employer", orphanRemoval = true)
+    @OneToMany(mappedBy = "employer", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Job> jobList;
 
+    public List<Job> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<Job> jobList) {
+        this.jobList = jobList;
+
+    }
         public Employer() {
 
         }
@@ -49,6 +55,8 @@ public class Employer {
         public void setCompany_name(String company_name) {
             this.company_name = company_name;
         }
+
+
 
         @Override
         public String toString() {

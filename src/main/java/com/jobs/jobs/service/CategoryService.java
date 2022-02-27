@@ -55,16 +55,16 @@ public class CategoryService {
 
     }
 
-    public Optional<Category> getCategory( String categoryName){
-
-        Optional<Category> category = Optional.ofNullable(categoryRepository.findByName(categoryName));
-        if(category.isPresent()){
-            return category;
-        } else{
-            throw new InformationNotFoundException("category " + categoryName + " not found");
-        }
-
-    }
+//    public Optional<Category> getCategory( String categoryName){
+//
+//        Optional<Category> category = Optional.ofNullable(categoryRepository.findByName(categoryName));
+//        if(category.isPresent()){
+//            return category;
+//        } else{
+//            throw new InformationNotFoundException("category " + categoryName + " not found");
+//        }
+//
+//    }
 
     public Category updateCategory(Long categoryId, Category categoryObject){
 

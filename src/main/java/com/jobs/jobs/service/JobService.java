@@ -11,7 +11,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JobService {
+public class
+
+
+
+
+
+
+
+
+
+
+
+
+
+JobService {
 
     private JobRepository jobRepository;
 

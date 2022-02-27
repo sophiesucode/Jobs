@@ -28,9 +28,9 @@ public class EmployerService {
 
     public Employer createEmployer(Employer employerObject){
 
-        Employer employer = employerRepository.findEmployerByCompany_name(employerObject.getCompany_name());
+        Optional<Employer> employer = employerRepository.findById(employerObject.getId());
         if(employer != null){
-            throw new InformationExistException("Company" + employer.getCompany_name() + " already exists");
+            throw new InformationExistException("Company" + employer.get().getId() + " already exists");
         } else{
             return employerRepository.save(employerObject);
         }

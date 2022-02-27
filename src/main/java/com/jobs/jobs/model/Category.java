@@ -24,7 +24,28 @@ public class Category {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Job> jobList;
 
+    public List<Job> getJobList() {
+        return jobList;
+    }
 
+    public void setJobList(List<Job> jobList) {
+        this.jobList = jobList;
+    }
+
+
+
+//    @OneToMany(mappedBy = "employer", orphanRemoval = true)
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    private List<Job> jobList;
+//
+//    public List<Job> getJobList() {
+//        return jobList;
+//    }
+//
+//    public void setJobList(List<Job> jobList) {
+//        this.jobList = jobList;
+//
+//    }
 
     public Category() {
 

@@ -4,6 +4,8 @@ package com.jobs.jobs.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name="jobs")
@@ -33,7 +35,7 @@ public class Job {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "employer_id")
+    @JoinColumn(name = "company_id")
     private Employer employer;
 
 
@@ -42,6 +44,15 @@ public class Job {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Job() {
 
