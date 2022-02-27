@@ -1,7 +1,11 @@
 package com.jobs.jobs.model;
 
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="categories")
@@ -14,6 +18,12 @@ public class Category {
 
     @Column
     private String name;
+
+
+    @OneToMany(mappedBy = "category", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Job> jobList;
+
 
 
     public Category() {
