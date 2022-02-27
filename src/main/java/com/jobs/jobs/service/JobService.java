@@ -61,7 +61,13 @@ public class JobService {
         }
     }
 
-    //look up all jobs , return all jobs 
+    //delete job
+
+
+
+
+
+    //look up all jobs , return all jobs
     public Iterable<Job> lookup(){
         return jobRepository.findAll();
     }

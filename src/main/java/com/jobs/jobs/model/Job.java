@@ -1,6 +1,8 @@
 package com.jobs.jobs.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -27,6 +29,19 @@ public class Job {
 
     @Column
     private int date_posted;
+
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "employer_id")
+    private Employer employer;
+
+
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Job() {
 
