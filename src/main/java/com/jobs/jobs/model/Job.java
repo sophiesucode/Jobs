@@ -19,7 +19,7 @@ public class Job {
     private String experience_level;
 
    @Column
-    private String job_title;
+    private String title;
 
    @Column
     private String job_description;
@@ -29,9 +29,6 @@ public class Job {
 
     @Column
     private String location;
-
-    @Column
-    private int date_posted;
 
 
     @JsonIgnore
@@ -59,14 +56,13 @@ public class Job {
 
     }
 
-    public Job(Long id, String job_title, String experience_level, String job_description, String company, String location, int date_posted) {
+    public Job(Long id, String title, String experience_level, String job_description, String company, String location) {
         this.id = id;
-        this.job_title = job_title;
+        this.title = title;
         this.experience_level = experience_level;
         this.job_description = job_description;
         this.company = company;
         this.location = location;
-        this.date_posted = date_posted;
     }
 
     public Long getId() {
@@ -85,12 +81,12 @@ public class Job {
         this.experience_level = experience_level;
     }
 
-    public String getJob_title() {
-        return job_title;
+    public String getTitle() {
+        return title;
     }
 
-    public void setJob_title(String job_title) {
-        this.job_title = job_title;
+    public void setTitle(String job_title) {
+        this.title = job_title;
     }
 
     public String getJob_description() {
@@ -109,14 +105,6 @@ public class Job {
         this.location = location;
     }
 
-    public int getDate_posted() {
-        return date_posted;
-    }
-
-    public void setDate_posted(int date_posted) {
-        this.date_posted = date_posted;
-    }
-
     public String getCompany() {
         return company;
     }
@@ -130,11 +118,10 @@ public class Job {
         return "Job{" +
                 "id=" + id +
                 ", experience_level='" + experience_level + '\'' +
-                ", job_title='" + job_title + '\'' +
+                ", job_title='" + title + '\'' +
                 ", job_description='" + job_description + '\'' +
                 ", company='" + company + '\'' +
                 ", location='" + location + '\'' +
-                ", date_posted=" + date_posted +
                 ", employer=" + employer +
                 ", category=" + category +
                 '}';

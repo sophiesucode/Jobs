@@ -13,24 +13,27 @@ import java.util.Optional;
 @Service
 public class
 JobService {
-
     private JobRepository jobRepository;
-
     @Autowired
-    public void setJobRepository(JobRepository JobRepository){
+    public void setJobRepository(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
     }
-
 
     public List<Job> getAllJobs(){
         return jobRepository.findAll();
     }
 
-    public Job createJob(Job jobObject){
+//    public Job createJob(Job jobObject){
+//
+//        Optional<Job> job = jobRepository.findById(jobObject.getId());
+//        return jobRepository.save(jobObject);
+//    }
+public Job createJob(Job jobObject) {
 
-        Job job = jobRepository.findByLocation(jobObject.getLocation());
-        return jobRepository.save(jobObject);
-    }
+    Job job = jobRepository.findJobByTitle(jobObject.getTitle());
+
+    return jobRepository.save(jobObject);
+}
 
 
     public Optional<Job> getJob(Long jobId) {
@@ -48,13 +51,13 @@ JobService {
         Optional<Job> job = jobRepository.findById(jobId);
         if(job.isPresent()){
             Job updateJob = jobRepository.findById(jobId).get();
-            updateJob.setJob_title(jobObject.getJob_title());
+            updateJob.setTitle(jobObject.getTitle());
             updateJob.setExperience_level(jobObject.getExperience_level());
             updateJob.setJob_description(jobObject.getJob_description());
             updateJob.setCompany(jobObject.getCompany());
             updateJob.setLocation(jobObject.getLocation());
 
-            updateJob.setId(jobObject.getId());
+            
             return jobRepository.save(updateJob);
 
         }else{
@@ -77,11 +80,11 @@ JobService {
 
 
     //look up all jobs , return all jobs
-    public Iterable<Job> lookup(){
-        return jobRepository.findAll();
-    }
-
-    public long total(){
-        return jobRepository.count();
-    }
+//    public Iterable<Job> lookup(){
+//        return jobRepository.findAll();
+//    }
+//
+//    public long total(){
+//        return jobRepository.count();
+//    }
 }

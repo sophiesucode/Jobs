@@ -4,7 +4,7 @@ package com.jobs.jobs.controller;
 
 
 import com.jobs.jobs.model.Job;
-import com.jobs.jobs.repository.JobRepository;
+
 import com.jobs.jobs.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
