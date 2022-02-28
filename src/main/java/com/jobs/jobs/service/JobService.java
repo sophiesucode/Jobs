@@ -12,19 +12,6 @@ import java.util.Optional;
 
 @Service
 public class
-
-
-
-
-
-
-
-
-
-
-
-
-
 JobService {
 
     private JobRepository jobRepository;
@@ -38,12 +25,10 @@ JobService {
     public List<Job> getAllJobs(){
         return jobRepository.findAll();
     }
-//
+
     public Job createJob(Job jobObject){
 
         Job job = jobRepository.findByLocation(jobObject.getLocation());
-
-
         return jobRepository.save(jobObject);
     }
 
@@ -66,7 +51,9 @@ JobService {
             updateJob.setJob_title(jobObject.getJob_title());
             updateJob.setExperience_level(jobObject.getExperience_level());
             updateJob.setJob_description(jobObject.getJob_description());
+            updateJob.setCompany(jobObject.getCompany());
             updateJob.setLocation(jobObject.getLocation());
+
             updateJob.setId(jobObject.getId());
             return jobRepository.save(updateJob);
 
@@ -75,10 +62,18 @@ JobService {
         }
     }
 
-    //delete job
 
+    public Optional<Job> deleteJob(Long jobId){
 
+        Optional<Job> job = jobRepository.findById(jobId);
+        if(job.isPresent()){
+            jobRepository.deleteById(jobId);
+            return job;
 
+        }else{
+            throw new InformationNotFoundException("Job with id " + jobId +" not found");
+        }
+    }
 
 
     //look up all jobs , return all jobs
