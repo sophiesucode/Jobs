@@ -16,7 +16,7 @@ public class Employer {
         private Long id;
 
         @Column
-        private String company_name;
+        private String name;
 
     @OneToMany(mappedBy = "employer", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -34,9 +34,9 @@ public class Employer {
 
         }
 
-        public Employer(Long id, String company_name) {
+        public Employer(Long id, String name) {
             this.id = id;
-            this.company_name = company_name;
+            this.name = name;
         }
 
 
@@ -48,12 +48,12 @@ public class Employer {
             this.id = id;
         }
 
-        public String getCompany_name() {
-            return company_name;
+        public String getName() {
+            return name;
         }
 
-        public void setCompany_name(String company_name) {
-            this.company_name = company_name;
+        public void setName(String name) {
+            this.name = name;
         }
 
 
@@ -62,7 +62,7 @@ public class Employer {
         public String toString() {
             return "Employer{" +
                     "id=" + id +
-                    ", company_name='" + company_name + '\'' +
+                    ", name='" + name + '\'' +
                     '}';
         }
     }

@@ -1,6 +1,5 @@
 package com.jobs.jobs.service;
 
-import com.jobs.jobs.exceptions.InformationExistException;
 import com.jobs.jobs.exceptions.InformationNotFoundException;
 
 import com.jobs.jobs.model.Employer;
@@ -26,36 +25,36 @@ public class EmployerService {
     }
 
 
-    public Employer createEmployer(Employer employerObject){
 
-        Optional<Employer> employer = employerRepository.findById(employerObject.getId());
-        if(employer != null){
-            throw new InformationExistException("Company" + employer.get().getId() + " already exists");
-        } else{
+
+    public Employer createEmployer(Employer employerObject) {
+
+        Employer employer = employerRepository.findEmployerByName(employerObject.getName());
+
             return employerRepository.save(employerObject);
         }
-    }
 
-    public Optional<Employer> getEmployer(Long employerId){
 
-        Optional<Employer> employer = employerRepository.findById(employerId);
+    public Optional<Employer> getEmployer(Long companyId){
+
+        Optional<Employer> employer = employerRepository.findById(companyId);
         if(employer.isPresent()){
             return employer;
         } else{
-            throw new InformationNotFoundException("employer with Id " + employerId + " not found");
+            throw new InformationNotFoundException("employer with Id " + companyId + " not found");
         }
 
     }
 
-    public Optional<Employer> deleteEmployer(Long employerId){
+    public Optional<Employer> deleteEmployer(Long companyId){
 
-        Optional<Employer> employer = employerRepository.findById(employerId);
+        Optional<Employer> employer = employerRepository.findById(companyId);
         if(employer.isPresent()){
-            employerRepository.deleteById(employerId);
+            employerRepository.deleteById(companyId);
             return employer;
 
         }else {
-            throw new InformationNotFoundException("employer with id " + employerId +" not found");
+            throw new InformationNotFoundException("employer with id " + companyId +" not found");
         }
     }
 }
