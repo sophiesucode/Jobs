@@ -2,7 +2,7 @@ package com.jobs.jobs.controller;
 
 
 
-import com.jobs.jobs.model.Employer;
+
 import com.jobs.jobs.model.Job;
 import com.jobs.jobs.repository.JobRepository;
 import com.jobs.jobs.service.JobService;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 @RestController
+@RequestMapping("/api")
 public class JobController {
 
     private JobService jobService;
