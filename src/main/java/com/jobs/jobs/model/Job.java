@@ -4,8 +4,6 @@ package com.jobs.jobs.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Optional;
 
 @Entity
 @Table(name="jobs")
@@ -25,6 +23,9 @@ public class Job {
 
    @Column
     private String job_description;
+
+   @Column
+   private String company;
 
     @Column
     private String location;
@@ -58,11 +59,12 @@ public class Job {
 
     }
 
-    public Job(Long id, String job_title, String experience_level, String job_description, String location, int date_posted) {
+    public Job(Long id, String job_title, String experience_level, String job_description, String company, String location, int date_posted) {
         this.id = id;
         this.job_title = job_title;
         this.experience_level = experience_level;
         this.job_description = job_description;
+        this.company = company;
         this.location = location;
         this.date_posted = date_posted;
     }
@@ -115,15 +117,26 @@ public class Job {
         this.date_posted = date_posted;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
     @Override
     public String toString() {
-        return "Jobs{" +
+        return "Job{" +
                 "id=" + id +
                 ", experience_level='" + experience_level + '\'' +
                 ", job_title='" + job_title + '\'' +
                 ", job_description='" + job_description + '\'' +
+                ", company='" + company + '\'' +
                 ", location='" + location + '\'' +
                 ", date_posted=" + date_posted +
+                ", employer=" + employer +
+                ", category=" + category +
                 '}';
     }
 }
