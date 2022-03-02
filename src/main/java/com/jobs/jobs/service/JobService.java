@@ -52,12 +52,13 @@ public Job createJob(Job jobObject) {
         if(job.isPresent()){
             Job updateJob = jobRepository.findById(jobId).get();
             updateJob.setTitle(jobObject.getTitle());
+            updateJob.setSalary(jobObject.getSalary());
             updateJob.setExperience_level(jobObject.getExperience_level());
             updateJob.setJob_description(jobObject.getJob_description());
             updateJob.setCompany(jobObject.getCompany());
             updateJob.setLocation(jobObject.getLocation());
 
-            
+
             return jobRepository.save(updateJob);
 
         }else{
@@ -78,13 +79,33 @@ public Job createJob(Job jobObject) {
         }
     }
 
+    ////new methods
 
+    public void save(Job job) {
+        jobRepository.save(job);
+    }
+
+    public Job get(long jobId) {
+        return jobRepository.findById(jobId).get();
+    }
+
+    public List<Job> getJobByCategory(Long categoryId){
+        return jobRepository.findAllByCategory_Id(categoryId);
+    }
+
+    public void delete(long jobId) {
+        jobRepository.deleteById(jobId);
+    }
+
+    public List<Job> listAll() {
+        return jobRepository.findAll();
+    }
     //look up all jobs , return all jobs
 //    public Iterable<Job> lookup(){
 //        return jobRepository.findAll();
 //    }
 //
-//    public long total(){
-//        return jobRepository.count();
-//    }
+    public long total(){
+        return jobRepository.count();
+    }
 }

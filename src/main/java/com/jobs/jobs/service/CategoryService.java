@@ -91,7 +91,27 @@ public class CategoryService {
     }
 
 
+//// cleaner less bulky code version
 
+    public List<Category> listAll() {
+        return categoryRepository.findAll();
+    }
 
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
+
+    public Category get(long categoryId) {
+        return categoryRepository.findById(categoryId).get();
+    }
+
+    public void delete(long categoryId) {
+        categoryRepository.deleteById(categoryId);
+    }
+
+    //to count total of jobs in category...need to refactor
+    public long total(){
+        return categoryRepository.count();
+    }
 
 }

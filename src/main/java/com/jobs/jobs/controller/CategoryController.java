@@ -22,7 +22,7 @@ public class CategoryController {
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-    @GetMapping("/categories")
+    @GetMapping("/categories/")
     public List<Category> getCategories() {
         System.out.println("calling getCategories ==>");
         return categoryService.getAllCategories();
