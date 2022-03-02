@@ -22,6 +22,9 @@ public class Job {
     private String title;
 
    @Column
+   private String salary;
+
+   @Column
     private String job_description;
 
    @Column
@@ -29,6 +32,29 @@ public class Job {
 
     @Column
     private String location;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
+    }
+
+    @Column
+    private String url;
+
+     @Column
+     private String img_url;
+
 
 
     @JsonIgnore
@@ -56,10 +82,11 @@ public class Job {
 
     }
 
-    public Job(Long id, String title, String experience_level, String job_description, String company, String location) {
+    public Job(Long id, String title, String experience_level, String salary, String job_description, String company, String location) {
         this.id = id;
         this.title = title;
         this.experience_level = experience_level;
+        this.salary = salary;
         this.job_description = job_description;
         this.company = company;
         this.location = location;
@@ -113,15 +140,26 @@ public class Job {
         this.company = company;
     }
 
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
     @Override
     public String toString() {
         return "Job{" +
                 "id=" + id +
                 ", experience_level='" + experience_level + '\'' +
-                ", job_title='" + title + '\'' +
+                ", title='" + title + '\'' +
+                ", salary='" + salary + '\'' +
                 ", job_description='" + job_description + '\'' +
                 ", company='" + company + '\'' +
                 ", location='" + location + '\'' +
+                ", url='" + url + '\'' +
+                ", img_url='" + img_url + '\'' +
                 ", employer=" + employer +
                 ", category=" + category +
                 '}';
