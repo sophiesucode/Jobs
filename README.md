@@ -24,12 +24,12 @@ This is a job board commited to increasing diversity in the tech industry. The j
 
 **Tools and Technologies
 -------------------------------------------------------------
--Trello for project planning: https://trello.com/b/z2EpG2rD/job-board
--SpringBoot
--Maven
--PostgreSQL
--Baslamiq for wireframes
--LucidChart for erd
--Angular for front end
+-**Trello for project planning: https://trello.com/b/z2EpG2rD/job-board**
+-**SpringBoot**
+-**Maven**
+-**PostgreSQL**
+-**Baslamiq for wireframes**
+-**LucidChart for erd**
+-**Angular for front end**
 
 
